@@ -1,6 +1,6 @@
 import axios from "axios"
 
-async function getProyectosFromAPI(api, setterFunction) {
+async function getDataFromAPI(api, setterFunction) {
   try {
     const response = await axios.get(api)
     setterFunction(response.data)
@@ -9,4 +9,4 @@ async function getProyectosFromAPI(api, setterFunction) {
   }
 }
 
-export default getProyectosFromAPI
+export default getDataFromAPI

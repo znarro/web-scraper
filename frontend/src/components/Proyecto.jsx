@@ -1,32 +1,20 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Tr, Td } from "@chakra-ui/react"
+import { Tr, Td, Link } from "@chakra-ui/react"
+import { ExternalLinkIcon } from "@chakra-ui/icons"
+import { Link as RouterLink } from "react-router-dom"
 
-const Proyecto = ({
-  numero,
-  fecUlt,
-  fecPres,
-  estado,
-  tituloDelProyecto,
-  periodo,
-  legislatura,
-  proponente,
-  grupoParlamentario,
-  sumilla,
-  autores,
-}) => (
+const Proyecto = ({ numero, fecUlt, fecPres, estado, tituloDelProyecto }) => (
   <Tr>
-    <Td>{numero}</Td>
+    <Td>
+      <Link as={RouterLink} to={`/${numero}`} isExternal>
+        {numero} <ExternalLinkIcon mx="2px" />
+      </Link>
+    </Td>
     <Td>{fecUlt}</Td>
     <Td>{fecPres}</Td>
     <Td>{estado}</Td>
     <Td>{tituloDelProyecto}</Td>
-    <Td>{periodo}</Td>
-    <Td>{legislatura}</Td>
-    <Td>{proponente}</Td>
-    <Td>{grupoParlamentario}</Td>
-    <Td>{sumilla}</Td>
-    <Td>{autores}</Td>
   </Tr>
 )
 
@@ -36,12 +24,6 @@ Proyecto.propTypes = {
   fecPres: PropTypes.string,
   estado: PropTypes.string,
   tituloDelProyecto: PropTypes.string,
-  periodo: PropTypes.string,
-  legislatura: PropTypes.string,
-  proponente: PropTypes.string,
-  grupoParlamentario: PropTypes.string,
-  sumilla: PropTypes.string,
-  autores: PropTypes.string,
 }
 
 export default Proyecto
