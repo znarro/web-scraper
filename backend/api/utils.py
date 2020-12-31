@@ -6,12 +6,14 @@ from .models import ProyectoDeLey
 
 
 URL = "http://www.congreso.gob.pe/pley-2016-2021/"
+DETAIL_BASE_URL = "http://www2.congreso.gob.pe"
+
+browser = mechanicalsoup.Browser()
 
 
 def scrapear_proyectos():
     html = urlopen(URL).read().decode("utf-8")
     soup = BeautifulSoup(html, "html.parser")
-    browser = mechanicalsoup.Browser()
 
     proyectos_url = soup.iframe["src"]
     proyectos_html = browser.get(proyectos_url).soup
@@ -23,8 +25,35 @@ def scrapear_proyectos():
 
 
 def crear_proyecto_en_db(proyectos):
-    for proyecto in proyectos[:25]:
+    for proyecto in proyectos[:1]:
         numero, fec_ult, fec_pres, estado, titulo_del_proyecto = proyecto.find_all("td")
+
+        path = numero.font.a["href"]
+        detalle_html = browser.get(DETAIL_BASE_URL + path).soup
+        tabla_detalle = detalle_html.find_all("table")[0].table
+        filas_de_detalle = tabla_detalle.find_all("tr")
+
+        (
+            periodo,
+            legislatura,
+            _fp,
+            _n,
+            proponente,
+            grupo_parlamentario,
+            _t,
+            sumilla,
+            autores,
+            _s,
+        ) = filas_de_detalle
+
+        print(
+            periodo.td.next_sibling,
+            legislatura.td.next_sibling,
+            proponente.td.next_sibling,
+            grupo_parlamentario.td.next_sibling,
+            sumilla.td.next_sibling,
+            autores.td.next_sibling,
+        )
 
         fec_ult = None if fec_ult.text == "" else fec_ult.text
 
