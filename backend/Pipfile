@@ -9,6 +9,7 @@ djangorestframework = "==3.12"
 beautifulsoup4 = "*"
 mechanicalsoup = "*"
 django-extensions = "*"
+django-cors-headers = "==3.2.1"
 
 [dev-packages]
 flake8 = "*"
