@@ -10,9 +10,9 @@ class ProyectoDeLey(models.Model):
     periodo = models.CharField(max_length=50)
     legislatura = models.CharField(max_length=50)
     proponente = models.CharField(max_length=50)
-    grupo_parlamentario = models.CharField(max_length=50)
+    grupo_parlamentario = models.CharField(max_length=50, blank=True, null=True)
     sumilla = models.TextField()
-    autores = models.TextField()
+    autores = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.titulo_del_proyecto
