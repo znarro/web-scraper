@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from "react"
-import { VStack, Heading } from "@chakra-ui/react"
-import TablaDeProyectos from "./components/TablaDeProyectos"
-import getProyectosFromAPI from "./calls/api"
-
-const API_URL = "http://localhost:8000/api/proyectos-de-ley/"
+import React from "react"
+import { Switch, Route } from "react-router-dom"
+import { VStack } from "@chakra-ui/react"
+import ListView from "./pages/ListView"
+import DetailView from "./pages/DetailView"
 
 function App() {
-  const [proyectos, setProyectos] = useState([])
-
-  useEffect(() => {
-    getProyectosFromAPI(API_URL, setProyectos)
-  }, [])
-
   return (
     <VStack as="main" spacing={5} px="5" py="10">
-      <Heading as="h1" size="xl">
-        Proyectos de Ley
-      </Heading>
-      <TablaDeProyectos proyectos={proyectos} />
+      <Switch>
+        <Route exact path="/">
+          <ListView />
+        </Route>
+        <Route path="/:numero">
+          <DetailView />
+        </Route>
+      </Switch>
     </VStack>
   )
 }
