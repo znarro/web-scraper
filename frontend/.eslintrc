@@ -11,6 +11,7 @@
     "semi": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "camelcase": 1,
+    "react/require-default-props": "off",
     "prettier/prettier": [
       "error",
       {

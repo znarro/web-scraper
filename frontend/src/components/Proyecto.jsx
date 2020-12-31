@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { Tr, Td } from "@chakra-ui/react"
 
 const Proyecto = ({ numero, fecUlt, fecPres, estado, tituloDelProyecto }) => (
@@ -10,5 +11,13 @@ const Proyecto = ({ numero, fecUlt, fecPres, estado, tituloDelProyecto }) => (
     <Td>{tituloDelProyecto}</Td>
   </Tr>
 )
+
+Proyecto.propTypes = {
+  numero: PropTypes.string,
+  fecUlt: PropTypes.string,
+  fecPres: PropTypes.string,
+  estado: PropTypes.string,
+  tituloDelProyecto: PropTypes.string,
+}
 
 export default Proyecto
