@@ -6,4 +6,16 @@ from .models import ProyectoDeLey
 class ProyectoDeLeySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProyectoDeLey
-        fields = ("numero", "fec_ult", "fec_pres", "estado", "titulo_del_proyecto")
+        fields = (
+            "numero",
+            "fec_ult",
+            "fec_pres",
+            "estado",
+            "titulo_del_proyecto",
+            "periodo",
+            "legislatura",
+            "proponente",
+            "grupo_parlamentario",
+            "sumilla",
+            "autores",
+        )
