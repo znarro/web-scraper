@@ -23,7 +23,7 @@ def scrapear_proyectos():
 
 
 def crear_proyecto_en_db(proyectos):
-    for proyecto in proyectos[:25]:
+    for proyecto in proyectos:
         numero, fec_ult, fec_pres, estado, titulo_del_proyecto = proyecto.find_all("td")
 
         fec_ult = None if fec_ult.text == "" else fec_ult.text
