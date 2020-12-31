@@ -10,6 +10,7 @@
   "rules": {
     "semi": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "camelcase": 1,
     "prettier/prettier": [
       "error",
       {
