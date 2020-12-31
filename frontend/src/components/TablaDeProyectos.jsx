@@ -12,6 +12,12 @@ const TablaDeProyectos = ({ proyectos }) => (
         <Th>Fec. Pres.</Th>
         <Th>Estado</Th>
         <Th>Título del Proyecto</Th>
+        <Th>Período</Th>
+        <Th>Legislatura</Th>
+        <Th>Proponente</Th>
+        <Th>Grupo Parlamentario</Th>
+        <Th>Sumilla</Th>
+        <Th>Autores</Th>
       </Tr>
     </Thead>
     <Tbody>
@@ -23,6 +29,12 @@ const TablaDeProyectos = ({ proyectos }) => (
           fecPres={proyecto.fec_pres}
           estado={proyecto.estado}
           tituloDelProyecto={proyecto.titulo_del_proyecto}
+          periodo={proyecto.periodo}
+          legislatura={proyecto.legislatura}
+          proponente={proyecto.proponente}
+          grupoParlamentario={proyecto.grupo_parlamentario}
+          sumilla={proyecto.sumilla}
+          autores={proyecto.autores}
         />
       ))}
     </Tbody>
