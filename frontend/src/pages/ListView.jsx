@@ -1,26 +1,19 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Heading } from "@chakra-ui/react"
+import PropTypes from "prop-types"
 import TablaDeProyectos from "../components/TablaDeProyectos"
-import getProyectosFromAPI from "../calls/api"
 
-const API_URL = "http://localhost:8000/api/proyectos-de-ley/"
+const ListView = ({ proyectos }) => (
+  <>
+    <Heading as="h1" size="lg" mb="5">
+      Proyectos de Ley
+    </Heading>
+    <TablaDeProyectos proyectos={proyectos} />
+  </>
+)
 
-const ListView = () => {
-  const [proyectos, setProyectos] = useState([])
-
-  useEffect(() => {
-    getProyectosFromAPI(API_URL, setProyectos)
-  }, [])
-
-  return (
-    <>
-      <Heading as="h1" size="xl">
-        Proyectos de Ley
-      </Heading>
-      TODO: Link inside TablaDeProyectos
-      <TablaDeProyectos proyectos={proyectos} />
-    </>
-  )
+ListView.propTypes = {
+  proyectos: PropTypes.instanceOf(Array),
 }
 
 export default ListView
