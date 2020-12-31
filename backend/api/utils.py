@@ -47,7 +47,15 @@ def crear_proyecto_en_db(proyectos):
             *others,
         ) = filas_de_detalle
 
-        fec_ult = None if fec_ult.text == "" else fec_ult.text
+        grupo_parlamentario = grupo_parlamentario.td.next_sibling.font.text
+        if grupo_parlamentario.strip() == "":
+            grupo_parlamentario = None
+
+        autores = autores.td.next_sibling.font.text
+        if autores.strip() == "":
+            autores = None
+
+        fec_ult = None if fec_ult.text.strip() == "" else fec_ult.text
 
         ProyectoDeLey.objects.create(
             numero=numero.font.a.text,
@@ -58,7 +66,7 @@ def crear_proyecto_en_db(proyectos):
             periodo=periodo.td.next_sibling.font.text,
             legislatura=legislatura.td.next_sibling.font.text,
             proponente=proponente.td.next_sibling.font.text,
-            grupo_parlamentario=grupo_parlamentario.td.next_sibling.font.text,
+            grupo_parlamentario=grupo_parlamentario,
             sumilla=sumilla.td.next_sibling.font.text,
-            autores=autores.td.next_sibling.font.text,
+            autores=autores,
         )
