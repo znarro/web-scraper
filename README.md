@@ -16,7 +16,7 @@ Desde el terminal, clonar el proyecto en un directorio e ingresar:
 [Pipenv](https://pypi.org/project/pipenv/) es una herramienta para la creación de entornos virtuales. Se puede instalar utilizando [pip](https://pypi.org/project/pip/), el package installer de Python:
 
 ```shell
-    $ pip install pipenv
+    $ pip3 install pipenv
 ```
 
 Una vez instalado, ingresar al directorio _backend_, instalar las dependencias y activar el entorno virtual:
@@ -27,12 +27,7 @@ Una vez instalado, ingresar al directorio _backend_, instalar las dependencias y
     $ pipenv shell
 ```
 
-El nombre del entorno en el shell indica que ingresó exitosamente. Puede comprobar las dependencias instaladas:
-
-```shell
-    (backend) $ pip freeze
-```
-
+El nombre del entorno en el shell indica que ingresó exitosamente.
 Correr los archivos de migraciones para crear la base de datos:
 
 ```shell
@@ -49,6 +44,13 @@ Al culminar, iniciar el servidor:
 
 ```shell
     (backend) $ python manage.py runserver
+```
+
+API endpoints:
+
+```
+http://localhost:8000/api/proyectos-de-ley/
+http://localhost:8000/api/proyectos-de-ley/<numero>
 ```
 
 - Para salir del entorno virtual, ejecutar `exit`.
@@ -68,4 +70,4 @@ Instalar las dependencias e iniciar la app:
     $ npm start
 ```
 
-Acceder a http://localhost:3000/
+Ingresar a http://localhost:3000/
