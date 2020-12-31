@@ -25,7 +25,7 @@ def scrapear_proyectos():
 
 
 def crear_proyecto_en_db(proyectos):
-    for proyecto in proyectos[:1]:
+    for proyecto in proyectos[:10]:
         numero, fec_ult, fec_pres, estado, titulo_del_proyecto = proyecto.find_all("td")
 
         path = numero.font.a["href"]
@@ -36,24 +36,15 @@ def crear_proyecto_en_db(proyectos):
         (
             periodo,
             legislatura,
-            _fp,
-            _n,
+            _fecha_pres,
+            _num,
             proponente,
             grupo_parlamentario,
-            _t,
+            _tit,
             sumilla,
             autores,
-            _s,
+            _seguim,
         ) = filas_de_detalle
-
-        print(
-            periodo.td.next_sibling,
-            legislatura.td.next_sibling,
-            proponente.td.next_sibling,
-            grupo_parlamentario.td.next_sibling,
-            sumilla.td.next_sibling,
-            autores.td.next_sibling,
-        )
 
         fec_ult = None if fec_ult.text == "" else fec_ult.text
 
@@ -63,4 +54,10 @@ def crear_proyecto_en_db(proyectos):
             fec_pres=fec_pres.text,
             estado=estado.text,
             titulo_del_proyecto=titulo_del_proyecto.text,
+            periodo=periodo.td.next_sibling.font.text,
+            legislatura=legislatura.td.next_sibling.font.text,
+            proponente=proponente.td.next_sibling.font.text,
+            grupo_parlamentario=grupo_parlamentario.td.next_sibling.font.text,
+            sumilla=sumilla.td.next_sibling.font.text,
+            autores=autores.td.next_sibling.font.text,
         )
