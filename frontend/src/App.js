@@ -13,11 +13,12 @@ function App() {
     }
 
     getProyectosFromAPI();
-  }, [proyectos]);
+  }, []);
 
   return (
     <div>
       <h1>Proyectos de Ley</h1>
+
       {proyectos.map((proyecto) => {
         return <p>{proyecto["numero"]}</p>;
       })}
